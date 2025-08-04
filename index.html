@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LollyLand - Sweet Shop</title>
+<style>
+/* Reset and base styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f8f9fa, #e0e0e0);
+  color: #333;
+}
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ff69b4;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  z-index: 999;
+}
+nav a {
+  margin: 8px 15px;
+  padding: 8px 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+nav a:hover {
+  background-color: #ff1493;
+}
+
+/* Sections */
+section {
+  padding: 100px 20px 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 70px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+section h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff69b4;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.product-card {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+.product-card p {
+  margin: 5px 0;
+}
+.product-card button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.product-card button:hover {
+  background-color: #ff1493;
+}
+
+/* Cart styles */
+#cartContents {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 5px;
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+#totalPrice {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 1.2em;
+  text-align: right;
+}
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 10px;
+}
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Review stars */
+.stars {
+  font-size: 1.5em;
+  color: #ffd700;
+  text-align: center;
+  margin: 10px 0;
+}
+.star {
+  cursor: pointer;
+  margin: 0 3px;
+  font-size: 2em;
+}
+.star:hover,
+.star.selected {
+  color: #ffa500;
+}
+
+/* Responsive form elements */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="card"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Comments area */
+#comments {
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+/* Hidden class for navigation */
+.hidden {
+  display: none;
+}
+
+/* Carousel or images? For now, simple styling for images */
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Footer for contact page */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ff69b4;
+  color: white;
+  margin-top: 40px;
+  font-size: 1em;
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <a href="#welcome" onclick="showSection('welcome')">Home</a>
+  <a href="#about-lollies" onclick="showSection('lollies')">Lollies</a>
+  <a href="#chocolates" onclick="showSection('chocolates')">Chocolates</a>
+  <a href="#chips" onclick="showSection('chips')">Chips</a>
+  <a href="#drinks" onclick="showSection('drinks')">Drinks</a>
+  <a href="#cart" onclick="showSection('cart')">Cart</a>
+  <a href="#delivery" onclick="showSection('delivery')">Delivery</a>
+  <a href="#contact" onclick="showSection('contact')">Contact</a>
+</nav>
+
+<!-- Sections -->
+
+<!-- Welcome Page -->
+<section id="welcome">
+  <h1>Welcome to LollyLand!</h1>
+  <p style="text-align:center; max-width:800px; margin:auto;">Discover the sweetest selection of candies, chocolates, chips, drinks, and more! Enjoy our exotic flavors and special sizes. Shop now and indulge in sweetness!</p>
+</section>
+
+<!-- Lollies Page -->
+<section id="lollies" class="hidden">
+  <h1>All Lollies</h1>
+  <div>
+    <h2>Sour Lollies</h2>
+    <div class="product-grid" id="sourLollies"></div>
+    <h2>Lollipops</h2>
+    <div class="product-grid" id="lollipops"></div>
+    <h2>Gummies</h2>
+    <div class="product-grid" id="gummies"></div>
+  </div>
+</section>
+
+<!-- Chocolates Page -->
+<section id="chocolates" class="hidden">
+  <h1>Chocolates</h1>
+  <div>
+    <h2>Jumbo Size</h2>
+    <div class="product-grid" id="jumboChocolates"></div>
+    <h2>Normal</h2>
+    <div class="product-grid" id="normalChocolates"></div>
+    <h2>Bite Size</h2>
+    <div class="product-grid" id="biteChocolates"></div>
+  </div>
+</section>
+
+<!-- Chips Page -->
+<section id="chips" class="hidden">
+  <h1>Chips</h1>
+  <div>
+    <h2>Small</h2>
+    <div class="product-grid" id="smallChips"></div>
+    <h2>Large</h2>
+    <div class="product-grid" id="largeChips"></div>
+    <h2>Jumbo</h2>
+    <div class="product-grid" id="jumboChips"></div>
+  </div>
+</section>
+
+<!-- Drinks Page -->
+<section id="drinks" class="hidden">
+  <h1>Drinks</h1>
+  <div>
+    <h2>Energy Drinks</h2>
+    <div class="product-grid" id="energyDrinks"></div>
+    <h2>Juices</h2>
+    <div class="product-grid" id="juices"></div>
+    <h2>Soda</h2>
+    <div class="product-grid" id="sodas"></div>
+  </div>
+</section>
+
+<!-- Cart Page -->
+<section id="cart" class="hidden">
+  <h1>Your Cart</h1>
+  <div id="cartContents"></div>
+  <div id="totalPrice">Total: $0.00</div>
+  <button onclick="clearCart()">Clear Cart</button>
+</section>
+
+<!-- Delivery Page -->
+<section id="delivery" class="hidden">
+  <h1>Delivery Details</h1>
+  <form id="deliveryForm" onsubmit="submitDelivery(event)">
+    <label>Name:</label><br>
+    <input type="text" id="name" required /><br>
+    <label>Address:</label><br>
+    <input type="text" id="address" required /><br>
+    <label>City:</label><br>
+    <input type="text" id="city" required /><br>
+    <label>State:</label><br>
+    <input type="text" id="state" required /><br>
+    <label>Zip Code:</label><br>
+    <input type="text" id="zip" required /><br>
+    <label>Card Number:</label><br>
+    <input type="text" id="card" required /><br>
+    <button type="submit">Confirm Delivery</button>
+  </form>
+</section>
+
+<!-- Contact Page -->
+<section id="contact" class="hidden">
+  <h1>Contact & Reviews</h1>
+  <p>Contact us at: <a href="mailto:support@lollyland.com">support@lollyland.com</a></p>
+  <h2>Rate Our Service</h2>
+  <div class="stars" id="starRating">
+    <span class="star" data-star="1">&#9733;</span>
+    <span class="star" data-star="2">&#9733;</span>
+    <span class="star" data-star="3">&#9733;</span>
+    <span class="star" data-star="4">&#9733;</span>
+    <span class="star" data-star="5">&#9733;</span>
+  </div>
+  <h2>Leave a Comment</h2>
+  <textarea id="comments" placeholder="Your comments..."></textarea><br>
+  <button onclick="submitReview()">Submit Review</button>
+  <div id="reviewsDisplay" style="margin-top:20px;">
+    <h3>Reviews:</h3>
+    <div id="reviewsList"></div>
+  </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+const sections = ['welcome','lollies','chocolates','chips','drinks','cart','delivery','contact'];
+let currentSection = 'welcome';
+
+// Sample products data
+const products = {
+  sourLollies: [
+    {name: 'Tart Twists', price: 1.00, flavor: 'Exotic'},
+    {name: 'Sour Strips', price: 1.20, flavor: 'Normal'},
+    {name: 'Tangy Bites', price: 1.10, flavor: 'Exotic'},
+    {name: 'Zesty Cubes', price: 1.30, flavor: 'Normal'},
+    {name: 'Pucker Pops', price: 1.50, flavor: 'Exotic'},
+    {name: 'Sour Beans', price: 0.90, flavor: 'Normal'},
+    {name: 'Lemon Zings', price: 1.20, flavor: 'Exotic'},
+    {name: 'Cherry Sours', price: 1.00, flavor: 'Normal'},
+    {name: 'Green Apple Sours', price: 1.20, flavor: 'Exotic'},
+    {name: 'Blue Raspberry Sours', price: 1.10, flavor: 'Normal'},
+    {name: 'Grape Sours', price: 1.30, flavor: 'Exotic'},
+    {name: 'Orange Sours', price: 1.20, flavor: 'Normal'},
+    {name: 'Watermelon Sours', price: 1.25, flavor: 'Exotic'},
+    {name: 'Mango Sours', price: 1.15, flavor: 'Normal'},
+    {name: 'Pineapple Sours', price: 1.20, flavor: 'Exotic'},
+    {name: 'Strawberry Sours', price: 1.00, flavor: 'Normal'},
+    {name: 'Citrus Sours', price: 1.20, flavor: 'Exotic'}
+  ],
+  lollipops: [
+    {name: 'Rainbow Pop', price: 0.75, flavor: 'Normal'},
+    {name: 'Cherry Lollipop', price: 0.80, flavor: 'Normal'},
+    {name: 'Grape Swirl', price: 0.85, flavor: 'Exotic'},
+    {name: 'Lemon Zest', price: 0.75, flavor: 'Normal'},
+    {name: 'Blueberry Blast', price: 0.85, flavor: 'Exotic'},
+    {name: 'Green Apple', price: 0.75, flavor: 'Normal'},
+    {name: 'Strawberry Delight', price: 0.80, flavor: 'Normal'},
+    {name: 'Banana Bonanza', price: 0.85, flavor: 'Exotic'},
+    {name: 'Watermelon Wonder', price: 0.80, flavor: 'Normal'},
+    {name: 'Mango Magic', price: 0.85, flavor: 'Exotic'},
+    {name: 'Pineapple Punch', price: 0.75, flavor: 'Normal'},
+    {name: 'Citrus Surprise', price: 0.80, flavor: 'Normal'},
+    {name: 'Berry Burst', price: 0.85, flavor: 'Exotic'},
+    {name: 'Tropical Twist', price: 0.85, flavor: 'Exotic'},
+    {name: 'Creamy Dreams', price: 0.90, flavor: 'Normal'},
+    {name: 'Chocolate Kiss', price: 0.95, flavor: 'Normal'},
+    {name: 'Lollipop Love', price: 0.80, flavor: 'Normal'}
+  ],
+  gummies: [
+    {name: 'Fruit Frenzy', price: 1.00, flavor: 'Normal'},
+    {name: 'Sour Gummies', price: 1.20, flavor: 'Exotic'},
+    {name: 'Honey Bears', price: 1.10, flavor: 'Normal'},
+    {name: 'Tropical Fruits', price: 1.30, flavor: 'Exotic'},
+    {name: 'Berry Gummies', price: 1.20, flavor: 'Normal'},
+    {name: 'Citrus Gummies', price: 1.25, flavor: 'Exotic'},
+    {name: 'Gummy Worms', price: 1.00, flavor: 'Normal'},
+    {name: 'Rainbow Gummies', price: 1.20, flavor: 'Exotic'},
+    {name: 'Choco Gummies', price: 1.15, flavor: 'Normal'},
+    {name: 'Coconut Gummies', price: 1.25, flavor: 'Exotic'},
+    {name: 'Pineapple Gummies', price: 1.20, flavor: 'Normal'},
+    {name: 'Mango Gummies', price: 1.30, flavor: 'Exotic'},
+    {name: 'Strawberry Gummies', price: 1.00, flavor: 'Normal'},
+    {name: 'Blueberry Gummies', price: 1.20, flavor: 'Exotic'},
+    {name: 'Watermelon Gummies', price: 1.15, flavor: 'Normal'},
+    {name: 'Lemon Gummies', price: 1.10, flavor: 'Exotic'},
+    {name: 'Grape Gummies', price: 1.20, flavor: 'Normal'}
+  ],
+  chocolates: {
+    jumbo: [
+      {name: 'Mega Milk Chocolate', price: 3.99, flavor: 'Normal'},
+      {name: 'Super Dark Chocolate', price: 4.49, flavor: 'Normal'},
+      {name: 'Exotic Truffle', price: 5.99, flavor: 'Exotic'},
+      {name: 'Jumbo Caramel', price: 4.99, flavor: 'Normal'},
+      {name: 'Exotic Mango Chocolate', price: 5.49, flavor: 'Exotic'},
+      {name: 'Rich Hazelnut', price: 4.89, flavor: 'Normal'},
+      {name: 'Exotic Passion Fruit', price: 6.49, flavor: 'Exotic'},
+      {name: 'Jumbo Nougat', price: 4.79, flavor: 'Normal'},
+      {name: 'Exotic Lychee', price: 6.99, flavor: 'Exotic'},
+      {name: 'Jumbo White Chocolate', price: 4.59, flavor: 'Normal'}
+    ],
+    normal: [
+      {name: 'Milk Chocolate Bar', price: 1.99, flavor: 'Normal'},
+      {name: 'Dark Chocolate Bar', price: 2.09, flavor: 'Normal'},
+      {name: 'White Chocolate Bar', price: 2.19, flavor: 'Normal'},
+      {name: 'Caramel Filled', price: 2.49, flavor: 'Normal'},
+      {name: 'Hazelnut Delight', price: 2.59, flavor: 'Normal'},
+      {name: 'Strawberry Filled', price: 2.49, flavor: 'Normal'},
+      {name: 'Almond Crunch', price: 2.69, flavor: 'Normal'},
+      {name: 'Coconut Filled', price: 2.49, flavor: 'Normal'},
+      {name: 'Coffee Infused', price: 2.89, flavor: 'Normal'},
+      {name: 'Mint Chocolate', price: 2.59, flavor: 'Normal'}
+    ],
+    bite: [
+      {name: 'Mini Chocolate Bites', price: 0.99, flavor: 'Normal'},
+      {name: 'Chocolate Chips', price: 1.09, flavor: 'Normal'},
+      {name: 'Bite-sized Truffles', price: 1.29, flavor: 'Exotic'},
+      {name: 'Mini Caramel', price: 1.09, flavor: 'Normal'},
+      {name: 'Exotic Lychee Bites', price: 1.49, flavor: 'Exotic'},
+      {name: 'Hazelnut Bites', price: 1.19, flavor: 'Normal'},
+      {name: 'Mango Bites', price: 1.49, flavor: 'Exotic'},
+      {name: 'White Chocolate Bites', price: 1.09, flavor: 'Normal'},
+      {name: 'Coconut Bites', price: 1.19, flavor: 'Normal'},
+      {name: 'Coffee Bites', price: 1.39, flavor: 'Normal'}
+    ]
+  },
+  chips: {
+    small: [
+      {name: 'Classic Lays', price: 1.00, flavor: 'Normal'},
+      {name: 'Salt & Vinegar', price: 1.10, flavor: 'Normal'},
+      {name: 'BBQ', price: 1.10, flavor: 'Normal'},
+      {name: 'Sour Cream', price: 1.00, flavor: 'Normal'},
+      {name: 'Cheddar', price: 1.20, flavor: 'Normal'},
+      {name: 'Honey Mustard', price: 1.20, flavor: 'Normal'},
+      {name: 'Jalapeño', price: 1.30, flavor: 'Exotic'},
+      {name: 'Truffle', price: 1.50, flavor: 'Exotic'},
+      {name: 'Lemon Pepper', price: 1.20, flavor: 'Normal'},
+      {name: 'Paprika', price: 1.20, flavor: 'Normal'},
+      {name: 'Seaweed', price: 1.40, flavor: 'Exotic'},
+      {name: 'Wasabi', price: 1.50, flavor: 'Exotic'},
+      {name: 'Sriracha', price: 1.20, flavor: 'Normal'},
+      {name: 'Garlic', price: 1.10, flavor: 'Normal'},
+      {name: 'Ranch', price: 1.20, flavor: 'Normal'},
+      {name: 'Buffalo', price: 1.30, flavor: 'Exotic'},
+      {name: 'Hot Chili', price: 1.40, flavor: 'Exotic'},
+      {name: 'Cajun', price: 1.50, flavor: 'Exotic'},
+      {name: 'BBQ Rib', price: 1.60, flavor: 'Exotic'},
+      {name: 'Sweet Chili', price: 1.40, flavor: 'Exotic'}
+    ],
+    large: [
+      {name: 'Family Pack Lays', price: 3.99, flavor: 'Normal'},
+      {name: 'Sour Lays', price: 4.49, flavor: 'Exotic'},
+      {name: 'BBQ Large', price: 4.49, flavor: 'Normal'},
+      {name: 'Seaweed Large', price: 4.89, flavor: 'Exotic'},
+      {name: 'Jalapeño Large', price: 4.99, flavor: 'Exotic'},
+      {name: 'Honey Mustard Large', price: 4.69, flavor: 'Normal'},
+      {name: 'Cajun Large', price: 5.09, flavor: 'Exotic'},
+      {name: 'Ranch Large', price: 4.89, flavor: 'Normal'},
+      {name: 'Buffalo Large', price: 5.19, flavor: 'Exotic'},
+      {name: 'Hot Chili Large', price: 5.29, flavor: 'Exotic'}
+    ],
+    jumbo: [
+      {name: 'Jumbo Family Pack', price: 8.99, flavor: 'Normal'},
+      {name: 'Jumbo Sour', price: 9.49, flavor: 'Exotic'},
+      {name: 'Jumbo BBQ', price: 9.49, flavor: 'Normal'},
+      {name: 'Jumbo Seaweed', price: 9.89, flavor: 'Exotic'},
+      {name: 'Jumbo Jalapeño', price: 9.99, flavor: 'Exotic'},
+      {name: 'Jumbo Honey Mustard', price: 9.69, flavor: 'Normal'},
+      {name: 'Jumbo Cajun', price: 10.09, flavor: 'Exotic'},
+      {name: 'Jumbo Ranch', price: 9.89, flavor: 'Normal'},
+      {name: 'Jumbo Buffalo', price: 10.19, flavor: 'Exotic'},
+      {name: 'Jumbo Hot Chili', price: 10.29, flavor: 'Exotic'}
+    ]
+  },
+  drinks: {
+    energy: [
+      {name: 'Energy Boost', price: 2.00, flavor: 'Normal'},
+      {name: 'Turbo Charge', price: 2.50, flavor: 'Normal'},
+      {name: 'Exotic Energy', price: 3.00, flavor: 'Exotic'},
+      {name: 'Power Punch', price: 2.75, flavor: 'Normal'},
+      {name: 'Voltage', price: 2.50, flavor: 'Normal'},
+      {name: 'Lightning', price: 3.00, flavor: 'Exotic'},
+      {name: 'Rocket Fuel', price: 3.20, flavor: 'Exotic'},
+      {name: 'Overdrive', price: 2.80, flavor: 'Normal'},
+      {name: 'Supercharge', price: 3.10, flavor: 'Exotic'},
+      {name: 'Max Energy', price: 2.90, flavor: 'Normal'},
+      {name: 'Energize', price: 2.60, flavor: 'Normal'},
+      {name: 'Volt', price: 3.10, flavor: 'Exotic'},
+      {name: 'Amp', price: 2.80, flavor: 'Normal'},
+      {name: 'Surge', price: 2.70, flavor: 'Normal'},
+      {name: 'Amped', price: 3.00, flavor: 'Exotic'},
+      {name: 'Zing', price: 2.90, flavor: 'Normal'},
+      {name: 'Vibe', price: 3.20, flavor: 'Exotic'},
+      {name: 'Rush', price: 2.85, flavor: 'Normal'},
+      {name: 'Bolt', price: 3.15, flavor: 'Exotic'},
+      {name: 'Spark', price: 2.95, flavor: 'Normal'},
+      {name: 'Fury', price: 3.25, flavor: 'Exotic'},
+      {name: 'Rev', price: 2.80, flavor: 'Normal'},
+      {name: 'Thrust', price: 3.00, flavor: 'Exotic'},
+      {name: 'Pulse', price: 2.75, flavor: 'Normal'},
+      {name: 'Energex', price: 3.30, flavor: 'Exotic'}
+    ],
+    juices: [
+      {name: 'Apple Juice', price: 2.50, flavor: 'Normal'},
+      {name: 'Orange Juice', price: 2.50, flavor: 'Normal'},
+      {name: 'Grape Juice', price: 2.50, flavor: 'Normal'},
+      {name: 'Pineapple Juice', price: 2.75, flavor: 'Normal'},
+      {name: 'Mango Juice', price: 3.00, flavor: 'Exotic'},
+      {name: 'Cranberry Juice', price: 2.75, flavor: 'Normal'},
+      {name: 'Passion Fruit Juice', price: 3.20, flavor: 'Exotic'},
+      {name: 'Lemonade', price: 2.60, flavor: 'Normal'},
+      {name: 'Cherry Juice', price: 2.80, flavor: 'Normal'},
+      {name: 'Watermelon Juice', price: 3.00, flavor: 'Exotic'},
+      {name: 'Blueberry Juice', price: 3.20, flavor: 'Exotic'},
+      {name: 'Strawberry Juice', price: 2.80, flavor: 'Normal'},
+      {name: 'Citrus Punch', price: 2.70, flavor: 'Normal'},
+      {name: 'Tropical Mix', price: 3.10, flavor: 'Exotic'},
+      {name: 'Apple Mango', price: 3.00, flavor: 'Exotic'},
+      {name: 'Pomegranate Juice', price: 3.25, flavor: 'Exotic'},
+      {name: 'Lemon Lime', price: 2.60, flavor: 'Normal'},
+      {name: 'Peach Nectar', price: 3.00, flavor: 'Exotic'},
+      {name: 'Grapefruit', price: 2.80, flavor: 'Normal'},
+      {name: 'Coconut Water', price: 3.20, flavor: 'Exotic'},
+      {name: 'Carrot & Apple', price: 2.90, flavor: 'Normal'},
+      {name: 'Beet & Berry', price: 3.30, flavor: 'Exotic'},
+      {name: 'Kiwi Splash', price: 3.00, flavor: 'Exotic'},
+      {name: 'Cucumber Lime', price: 2.70, flavor: 'Normal'},
+      {name: 'Mango Passion', price: 3.25, flavor: 'Exotic'}
+    ],
+    soda: [
+      {name: 'Cola', price: 1.50, flavor: 'Normal'},
+      {name: 'Lemon Lime', price: 1.50, flavor: 'Normal'},
+      {name: 'Orange Soda', price: 1.50, flavor: 'Normal'},
+      {name: 'Grape Soda', price: 1.50, flavor: 'Normal'},
+      {name: 'Root Beer', price: 1.60, flavor: 'Normal'},
+      {name: 'Cream Soda', price: 1.60, flavor: 'Normal'},
+      {name: 'Exotic Mango Soda', price: 1.80, flavor: 'Exotic'},
+      {name: 'Cherry Cola', price: 1.60, flavor: 'Normal'},
+      {name: 'Berry Blast', price: 1.80, flavor: 'Exotic'},
+      {name: 'Lemonade Spark', price: 1.50, flavor: 'Normal'},
+      {name: 'Peach Fizz', price: 1.80, flavor: 'Exotic'},
+      {name: 'Pineapple Pop', price: 1.80, flavor: 'Exotic'},
+      {name: 'Ginger Ale', price: 1.60, flavor: 'Normal'},
+      {name: 'Creamy Banana', price: 1.80, flavor: 'Exotic'},
+      {name: 'Cucumber Mint', price: 1.80, flavor: 'Exotic'},
+      {name: 'Strawberry Soda', price: 1.80, flavor: 'Exotic'},
+      {name: 'Lemon Berry', price: 1.80, flavor: 'Exotic'},
+      {name: 'Citrus Cooler', price: 1.80, flavor: 'Exotic'},
+      {name: 'Pomegranate Fizz', price: 1.80, flavor: 'Exotic'},
+      {name: 'Tropical Splash', price: 1.80, flavor: 'Exotic'},
+      {name: 'Cola Zero', price: 1.50, flavor: 'Normal'},
+      {name: 'Grape Zero', price: 1.50, flavor: 'Normal'},
+      {name: 'Lemon Lime Zero', price: 1.50, flavor: 'Normal'},
+      {name: 'Orange Zero', price: 1.50, flavor: 'Normal'},
+      {name: 'Root Beer Zero', price: 1.60, flavor: 'Normal'}
+    ]
+  }
+};
+
+// Cart array
+let cart = [];
+
+// Reviews array
+let reviews = [];
+let currentRating = 0;
+
+// Utility functions
+function showSection(id) {
+  sections.forEach(s => {
+    document.getElementById(s).classList.toggle('hidden', s !== id);
+  });
+  currentSection = id;
+  // Scroll to top
+  window.scrollTo(0,0);
+}
+
+function createProductCard(product, typeId) {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  const title = document.createElement('h3');
+  title.innerText = product.name;
+  const price = document.createElement('p');
+  price.innerText = `Price: $${product.price.toFixed(2)}`;
+  const btn = document.createElement('button');
+  btn.innerText = 'Add to Cart';
+  btn.onclick = () => {
+    addToCart({...product});
+  };
+  card.appendChild(title);
+  card.appendChild(price);
+  card.appendChild(btn);
+  document.getElementById(typeId).appendChild(card);
+}
+
+function initProducts() {
+  // Lollies
+  products.sourLollies.forEach(p => createProductCard(p, 'sourLollies'));
+  products.lollipops.forEach(p => createProductCard(p, 'lollipops'));
+  products.gummies.forEach(p => createProductCard(p, 'gummies'));
+
+  // Chocolates
+  products.chocolates.jumbo.forEach(p => createProductCard(p, 'jumboChocolates'));
+  products.chocolates.normal.forEach(p => createProductCard(p, 'normalChocolates'));
+  products.chocolates.bite.forEach(p => createProductCard(p, 'biteChocolates'));
+
+  // Chips
+  products.chips.small.forEach(p => createProductCard(p, 'smallChips'));
+  products.chips.large.forEach(p => createProductCard(p, 'largeChips'));
+  products.chips.jumbo.forEach(p => createProductCard(p, 'jumboChips'));
+
+  // Drinks
+  products.drinks.energy.forEach(p => createProductCard(p, 'energyDrinks'));
+  products.drinks.juices.forEach(p => createProductCard(p, 'juices'));
+  products.drinks.soda.forEach(p => createProductCard(p, 'sodas'));
+}
+
+// Cart functions
+function addToCart(product) {
+  cart.push(product);
+  updateCart();
+}
+
+function updateCart() {
+  const container = document.getElementById('cartContents');
+  container.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `${item.name} - $${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">Remove</button>`;
+    container.appendChild(div);
+    total += item.price;
+  });
+  document.getElementById('totalPrice').innerText = `Total: $${total.toFixed(2)}`;
+}
+
+function removeFromCart(index) {
+  cart.splice(index,1);
+  updateCart();
+}
+
+function clearCart() {
+  cart = [];
+  updateCart();
+}
+
+// Delivery form
+function submitDelivery(e) {
+  e.preventDefault();
+  alert('Thank you! Your order has been received and will be processed.');
+  cart = [];
+  updateCart();
+  showSection('welcome');
+  document.getElementById('deliveryForm').reset();
+}
+
+// Reviews
+const stars = document.querySelectorAll('.star');
+stars.forEach(star => {
+  star.addEventListener('mouseenter', () => {
+    highlightStars(parseInt(star.dataset.star));
+  });
+  star.addEventListener('click', () => {
+    currentRating = parseInt(star.dataset.star);
+    highlightStars(currentRating);
+  });
+});
+function highlightStars(rating) {
+  stars.forEach(s => {
+    s.className = 'star' + (parseInt(s.dataset.star) <= rating ? ' selected' : '');
+  });
+}
+function submitReview() {
+  const comment = document.getElementById('comments').value;
+  reviews.push({rating: currentRating, comment: comment});
+  displayReviews();
+  document.getElementById('comments').value = '';
+  currentRating = 0;
+  highlightStars(0);
+}
+function displayReviews() {
+  const list = document.getElementById('reviewsList');
+  list.innerHTML = '';
+  reviews.forEach(r => {
+    const div = document.createElement('div');
+    div.innerHTML = `Rating: ${'&#9733;'.repeat(r.rating)}<br/>Comment: ${r.comment}`;
+    list.appendChild(div);
+  });
+}
+
+// Initialize
+initProducts();
+showSection('welcome');
+</script>
+</body>
+</html>
