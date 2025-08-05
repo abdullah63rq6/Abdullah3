@@ -3,65 +3,61 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LollyLand - Sweet Shop</title>
+<title>LollyLand - Simple Candy Shop</title>
 <style>
-/* Reset and base styles */
+/* Basic colorful, fun CSS styling */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #ffe4e1, #ffe0b2);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffe4f0, #ffe0b2);
   color: #333;
   line-height: 1.6;
   scroll-behavior: smooth;
 }
-
-/* Navigation Bar */
 nav {
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 0; width: 100%;
   background: linear-gradient(45deg, #ff69b4, #ff1493);
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  padding: 12px 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  justify-content: center;
+  padding: 10px 0;
   z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 nav a {
-  margin: 8px 15px;
+  margin: 8px 12px;
   padding: 8px 12px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.2);
-  transition: background 0.3s, transform 0.2s;
+  font-size: 1.1em;
+  transition: all 0.3s;
 }
 nav a:hover {
   background: #fff;
   color: #ff69b4;
   transform: scale(1.05);
 }
-
-/* Sections */
 section {
-  padding: 120px 20px 60px 20px;
+  padding: 120px 20px 60px;
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 80px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255,255,255,0.9);
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s forwards;
 }
-section h1 {
+h1 {
   text-align: center;
-  margin-bottom: 25px;
   font-size: 2.5em;
   color: #ff69b4;
+  margin-bottom: 20px;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 }
 @keyframes fadeInUp {
@@ -70,54 +66,52 @@ section h1 {
     transform: translateY(0);
   }
 }
-
-/* Product Grid */
+h2 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2em;
+  color: #ff1493;
+}
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
 }
-
-/* Product Card */
 .product-card {
-  background: #fff8f8;
+  background: #fff;
   border-radius: 12px;
-  padding: 15px;
+  padding: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s;
 }
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.03);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 .product-card img {
   width: 150px;
   height: 150px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 12px;
-  transition: transform 0.3s;
+  margin-bottom: 10px;
+  border: 2px solid #ff69b4;
 }
-.product-card img:hover {
-  transform: scale(1.05);
-}
-.product-card h3 {
-  margin: 10px 0 5px 0;
-  font-size: 1.3em;
+h3 {
+  margin: 8px 0 4px;
+  font-size: 1.2em;
   color: #c71585;
-  text-align: center;
 }
-.product-card p {
-  margin: 5px 0;
+p {
+  margin: 4px 0;
   font-weight: bold;
-  color: #555;
+  font-size: 1.1em;
 }
-.product-card button {
-  margin-top: 10px;
+button {
+  margin-top: 8px;
   padding: 8px 14px;
   background: linear-gradient(45deg, #ff69b4, #ff1493);
   color: #fff;
@@ -125,32 +119,26 @@ section h1 {
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s;
 }
-.product-card button:hover {
+button:hover {
   background: linear-gradient(45deg, #ff1493, #ff69b4);
   transform: scale(1.05);
 }
-
-/* Cart styles */
 #cartContents {
-  max-height: 350px;
+  max-height: 300px;
   overflow-y: auto;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .cart-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #ffe4e1;
+  justify-content: space-between;
+  background: #ffe4f0;
   padding: 8px;
   margin-bottom: 8px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: background 0.3s;
-}
-.cart-item:hover {
-  background: #ffd1d8;
 }
 #totalPrice {
   font-weight: bold;
@@ -160,89 +148,69 @@ section h1 {
   padding-right: 10px;
   color: #c71585;
 }
-button[type="button"], button[type="submit"] {
-  padding: 10px 16px;
+button#clearCartBtn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff7f50, #ff6347);
+  color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+  font-size: 1.1em;
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s;
 }
-button[type="button"] {
-  background: #ff7f50;
-  color: #fff;
-}
-button[type="button"]:hover {
-  background: #ff6347;
+button#clearCartBtn:hover {
+  background: linear-gradient(45deg, #ff6347, #ff7f50);
   transform: scale(1.05);
 }
-button[type="submit"] {
-  background: #4CAF50;
-  color: #fff;
-}
-button[type="submit"]:hover {
-  background: #45a049;
-  transform: scale(1.05);
-}
-
-/* Delivery & Review styles */
 form {
   max-width: 600px;
   margin: auto;
   padding: 10px;
 }
-input[type="text"], input[type="number"], input[type="email"] {
+input {
   width: 100%;
   padding: 10px;
   margin-top: 6px;
   margin-bottom: 15px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 1em;
 }
 #comments {
-  width: 100%;
   height: 80px;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  font-size: 1em;
 }
 #starRating {
   text-align: center;
+  margin: 15px 0;
 }
 .star {
   font-size: 2.5em;
   cursor: pointer;
   color: #ffd700;
   margin: 0 4px;
-  transition: transform 0.2s, color 0.3s;
+  transition: all 0.2s;
 }
 .star:hover, .star.selected {
   color: #ffa500;
   transform: scale(1.2);
 }
 #reviewsList {
-  margin-top: 15px;
-  max-height: 200px;
+  max-height: 180px;
   overflow-y: auto;
-  padding: 10px;
   background: #fff0f5;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 #reviewsList div {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px dashed #ccc;
   padding: 8px 0;
 }
-
-/* Contact page footer and background enhancements */
 footer {
   text-align: center;
   padding: 20px;
   background: linear-gradient(45deg, #ff69b4, #ff1493);
-  color: white;
+  color: #fff;
   font-size: 1em;
   margin-top: 40px;
 }
@@ -250,444 +218,329 @@ footer {
 </head>
 <body>
 
-<!-- Navigation Bar -->
+<!-- Navigation -->
 <nav>
-  <a href="#welcome" onclick="showSection('welcome')">Home</a>
-  <a href="#about-lollies" onclick="showSection('lollies')">Lollies</a>
-  <a href="#chocolates" onclick="showSection('chocolates')">Chocolates</a>
-  <a href="#chips" onclick="showSection('chips')">Chips</a>
-  <a href="#drinks" onclick="showSection('drinks')">Drinks</a>
-  <a href="#cart" onclick="showSection('cart')">Cart</a>
-  <a href="#delivery" onclick="showSection('delivery')">Delivery</a>
-  <a href="#contact" onclick="showSection('contact')">Contact</a>
+  <a href="#welcome" onclick="showPage('welcome')">Home</a>
+  <a href="#lollies" onclick="showPage('lollies')">Lollies</a>
+  <a href="#chocolates" onclick="showPage('chocolates')">Chocolates</a>
+  <a href="#chips" onclick="showPage('chips')">Chips</a>
+  <a href="#drinks" onclick="showPage('drinks')">Drinks</a>
+  <a href="#cart" onclick="showPage('cart')">Cart</a>
+  <a href="#delivery" onclick="showPage('delivery')">Delivery</a>
+  <a href="#contact" onclick="showPage('contact')">Contact</a>
 </nav>
 
-<!-- Sections with images and animations -->
-
-<!-- Welcome Page -->
+<!-- Sections -->
 <section id="welcome">
-  <h1>🎉 Welcome to LollyLand! 🎉</h1>
-  <p style="text-align:center; max-width:800px; margin:auto; font-size:1.2em;">Dive into a world of colorful candies, exotic chocolates, crispy chips, and refreshing drinks! Shop now and indulge your sweet tooth!</p>
-  <img src="https://images.unsplash.com/photo-1577193298526-915d373b0a34?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80" alt="Candy Shop" style="width:100%; max-width:800px; border-radius:15px; margin-top:20px; box-shadow:0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'"/>
+<h1>🎉 Welcome to LollyLand! 🎉</h1>
+<p style="text-align:center;font-size:1.2em;">Enjoy our colorful candies, chocolates, chips, and drinks! Shop now and satisfy your sweet tooth!</p>
+<img src="https://images.unsplash.com/photo-1577193298526-915d373b0a34?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80" style="width:80%; max-width:800px; margin-top:20px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'"/>
 </section>
 
-<!-- Lollies Page -->
-<section id="lollies" class="hidden" style="animation-delay:0.2s;">
-  <h1>🍭 All Lollies 🍭</h1>
-  <div>
-    <h2 style="text-align:center;">Sour Lollies</h2>
-    <div class="product-grid" id="sourLollies"></div>
-    <h2 style="text-align:center;">Lollipops</h2>
-    <div class="product-grid" id="lollipops"></div>
-    <h2 style="text-align:center;">Gummies</h2>
-    <div class="product-grid" id="gummies"></div>
-  </div>
+<!-- Lollies -->
+<section id="lollies" class="hidden">
+<h1>🍭 All Lollies 🍭</h1>
+<h2>Sour Lollies</h2>
+<div class="product-grid" id="sourLollies"></div>
+<h2>Lollipops</h2>
+<div class="product-grid" id="lollipops"></div>
+<h2>Gummies</h2>
+<div class="product-grid" id="gummies"></div>
 </section>
 
-<!-- Chocolates Page -->
-<section id="chocolates" class="hidden" style="animation-delay:0.2s;">
-  <h1>🍫 Chocolates 🍫</h1>
-  <div>
-    <h2 style="text-align:center;">Jumbo Size</h2>
-    <div class="product-grid" id="jumboChocolates"></div>
-    <h2 style="text-align:center;">Normal</h2>
-    <div class="product-grid" id="normalChocolates"></div>
-    <h2 style="text-align:center;">Bite Size</h2>
-    <div class="product-grid" id="biteChocolates"></div>
-  </div>
+<!-- Chocolates -->
+<section id="chocolates" class="hidden">
+<h1>🍫 Chocolates 🍫</h1>
+<h2>Jumbo</h2>
+<div class="product-grid" id="jumboChocolates"></div>
+<h2>Normal</h2>
+<div class="product-grid" id="normalChocolates"></div>
+<h2>Bite</h2>
+<div class="product-grid" id="biteChocolates"></div>
 </section>
 
-<!-- Chips Page -->
-<section id="chips" class="hidden" style="animation-delay:0.2s;">
-  <h1>🥔 Chips 🥔</h1>
-  <div>
-    <h2 style="text-align:center;">Small</h2>
-    <div class="product-grid" id="smallChips"></div>
-    <h2 style="text-align:center;">Large</h2>
-    <div class="product-grid" id="largeChips"></div>
-    <h2 style="text-align:center;">Jumbo</h2>
-    <div class="product-grid" id="jumboChips"></div>
-  </div>
+<!-- Chips -->
+<section id="chips" class="hidden">
+<h1>🥔 Chips 🥔</h1>
+<h2>Small</h2>
+<div class="product-grid" id="smallChips"></div>
+<h2>Large</h2>
+<div class="product-grid" id="largeChips"></div>
+<h2>Jumbo</h2>
+<div class="product-grid" id="jumboChips"></div>
 </section>
 
-<!-- Drinks Page -->
-<section id="drinks" class="hidden" style="animation-delay:0.2s;">
-  <h1>🥤 Drinks 🥤</h1>
-  <div>
-    <h2 style="text-align:center;">Energy Drinks</h2>
-    <div class="product-grid" id="energyDrinks"></div>
-    <h2 style="text-align:center;">Juices</h2>
-    <div class="product-grid" id="juices"></div>
-    <h2 style="text-align:center;">Soda</h2>
-    <div class="product-grid" id="sodas"></div>
-  </div>
+<!-- Drinks -->
+<section id="drinks" class="hidden">
+<h1>🥤 Drinks 🥤</h1>
+<h2>Energy Drinks</h2>
+<div class="product-grid" id="energyDrinks"></div>
+<h2>Juices</h2>
+<div class="product-grid" id="juices"></div>
+<h2>Soda</h2>
+<div class="product-grid" id="sodas"></div>
 </section>
 
-<!-- Cart Page -->
-<section id="cart" class="hidden" style="animation-delay:0.2s;">
-  <h1>🛒 Your Cart 🛒</h1>
-  <div id="cartContents"></div>
-  <div id="totalPrice">Total: $0.00</div>
-  <button onclick="clearCart()">🧹 Clear Cart</button>
+<!-- Cart -->
+<section id="cart" class="hidden">
+<h1>🛒 Your Cart 🛒</h1>
+<div id="cartContents"></div>
+<div id="totalPrice">Total: $0.00</div>
+<button onclick="clearCart()">🧹 Clear Cart</button>
 </section>
 
-<!-- Delivery Page -->
-<section id="delivery" class="hidden" style="animation-delay:0.2s;">
-  <h1>🚚 Delivery Details 🚚</h1>
-  <form id="deliveryForm" onsubmit="submitDelivery(event)">
-    <label>Name:</label>
-    <input type="text" id="name" placeholder="Your Name" required />
-    <label>Address:</label>
-    <input type="text" id="address" placeholder="Street Address" required />
-    <label>City:</label>
-    <input type="text" id="city" placeholder="City" required />
-    <label>State:</label>
-    <input type="text" id="state" placeholder="State" required />
-    <label>Zip Code:</label>
-    <input type="text" id="zip" placeholder="Zip" required />
-    <label>Card Number:</label>
-    <input type="text" id="card" placeholder="XXXX-XXXX-XXXX-XXXX" required />
-    <button type="submit">✅ Confirm Order</button>
-  </form>
+<!-- Delivery -->
+<section id="delivery" class="hidden">
+<h1>🚚 Delivery Details 🚚</h1>
+<form id="deliveryForm" onsubmit="submitDelivery(event)">
+<input type="text" placeholder="Your Name" id="name" required />
+<input type="text" placeholder="Street Address" id="address" required />
+<input type="text" placeholder="City" id="city" required />
+<input type="text" placeholder="State" id="state" required />
+<input type="text" placeholder="Zip" id="zip" required />
+<input type="text" placeholder="Card Number" id="card" required />
+<button type="submit">✅ Confirm Order</button>
+</form>
 </section>
 
-<!-- Contact & Review Page -->
-<section id="contact" class="hidden" style="animation-delay:0.2s;">
-  <h1>💌 Contact & Reviews 💌</h1>
-  <p style="text-align:center;">Contact us at: <a href="mailto:support@lollyland.com" style="color:#ff69b4;">support@lollyland.com</a></p>
-  <h2 style="text-align:center;">Rate Our Service</h2>
-  <div id="starRating">
-    <span class="star" data-star="1">&#9733;</span>
-    <span class="star" data-star="2">&#9733;</span>
-    <span class="star" data-star="3">&#9733;</span>
-    <span class="star" data-star="4">&#9733;</span>
-    <span class="star" data-star="5">&#9733;</span>
-  </div>
-  <h2 style="text-align:center;">Leave a Comment</h2>
-  <textarea id="comments" placeholder="Your comments..."></textarea>
-  <br/>
-  <button onclick="submitReview()">📝 Submit Review</button>
-  <div id="reviewsDisplay" style="margin-top:20px;">
-    <h3>Reviews:</h3>
-    <div id="reviewsList"></div>
-  </div>
+<!-- Contact & Reviews -->
+<section id="contact" class="hidden">
+<h1>💌 Contact & Reviews 💌</h1>
+<p style="text-align:center;">support@lollyland.com</p>
+<h2 style="text-align:center;">Rate Our Service</h2>
+<div id="stars" style="text-align:center;">
+<span class="star" data-star="1">★</span>
+<span class="star" data-star="2">★</span>
+<span class="star" data-star="3">★</span>
+<span class="star" data-star="4">★</span>
+<span class="star" data-star="5">★</span>
+</div>
+<h2 style="text-align:center;">Leave a Comment</h2>
+<textarea id="comments" placeholder="Your comments..."></textarea>
+<button onclick="submitReview()">📝 Submit Review</button>
+<div id="reviews"></div>
 </section>
-
-<!-- JavaScript with animations, images, and effects -->
 
 <script>
-// Sections array
+// Basic page control
 const sections = ['welcome','lollies','chocolates','chips','drinks','cart','delivery','contact'];
-let currentSection = 'welcome';
+function showPage(id) {
+  sections.forEach(s => {
+    document.getElementById(s).classList.toggle('hidden', s !== id);
+  });
+  // Animate fade
+  const sec = document.getElementById(id);
+  sec.style.opacity=0;
+  setTimeout(()=> {
+    sec.style.transition='opacity 0.7s';
+    sec.style.opacity=1;
+  },50);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
-// Sample products data with image URLs
+// Sample products with fewer items
 const products = {
   sourLollies: [
-    {name: 'Tart Twists', price: 1.00, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1618768443430-8d6b1b8f9f7e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Sour Strips', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1604684689472-8d1a9e660d4b?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Tangy Bites', price: 1.10, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615855831591-4b2b8f4e9a2f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Zesty Cubes', price: 1.30, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1578272452065-9b7e2dbfae4b?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Pucker Pops', price: 1.50, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1598810937320-123b27b03b37?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Sour Beans', price: 0.90, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1617935874809-c0c7b5f4d2d0?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Lemon Zings', price: 1.20, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1613782787261-6ad3a4f3b1a4?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Cherry Sours', price: 1.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1594396996902-0d5f7a2328d8?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Green Apple Sours', price: 1.20, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1610715105189-86b0e7f7f0b2?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Blue Raspberry Sours', price: 1.10, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1600652555054-2a4f5f9f8a7e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Grape Sours', price: 1.30, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1602297079412-4b8f8e2b7d7f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Orange Sours', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1592011565400-2b6f40d0e37f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Watermelon Sours', price: 1.25, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1616071450850-bd8f04946f9f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Mango Sours', price: 1.15, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1614723855321-79d0e2a2f0e4?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Pineapple Sours', price: 1.20, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1605302625292-ccf8e2e839f0?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Strawberry Sours', price: 1.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615538147880-0667e4ad418b?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Citrus Sours', price: 1.20, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1613657693364-0a4973d3b8f5?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+    {name:'Tart Twists',price:1.00,img:'https://images.unsplash.com/photo-1618768443430-8d6b1b8f9f7e'},
+    {name:'Sour Strips',price:1.20,img:'https://images.unsplash.com/photo-1604684689472-8d1a9e660d4b'}
   ],
   lollipops: [
-    {name: 'Rainbow Pop', price: 0.75, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1609595459924-0f5854b18a2f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Cherry Lollipop', price: 0.80, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1600953565170-0b6668d5b7f6?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Grape Swirl', price: 0.85, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1612320444608-0a6f4b6e4d0e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Lemon Zest', price: 0.75, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1600496045300-318ad183b8b2?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Blueberry Blast', price: 0.85, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1609792266504-8e8f2b0b1e01?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Green Apple', price: 0.75, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1616711397911-842d4f3dbd3f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Strawberry Delight', price: 0.80, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1618343186524-9e0f6e0a7b8e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Banana Bonanza', price: 0.85, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1611161850568-4a0b8d8b4d0e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Watermelon Wonder', price: 0.80, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1618410725074-4e8a035d0b62?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Mango Magic', price: 0.85, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615801599590-2f4f4a6e2b2e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Pineapple Punch', price: 0.75, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1618421214894-3d0d3b7d8b0f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Citrus Gummies', price: 0.80, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1616229245917-6a1f2d7f4e0e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Berry Burst', price: 0.85, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1618876460728-4f7a6d4a60a2?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Tropical Twist', price: 0.85, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615801599590-2f4f4a6e2b2e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Creamy Dreams', price: 0.90, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1618498286033-4c4b0e0d7f2f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Chocolate Kiss', price: 0.95, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1608134476200-7b9b78d8f4dc?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+    {name:'Rainbow Pop',price:0.75,img:'https://images.unsplash.com/photo-1609595459924-0f5854b18a2f'},
+    {name:'Cherry Lollipop',price:0.80,img:'https://images.unsplash.com/photo-1600953565170-0b6668d5b7f6'}
   ],
   gummies: [
-    {name: 'Fruit Frenzy', price: 1.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Sour Gummies', price: 1.20, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Honey Bears', price: 1.10, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Tropical Fruits', price: 1.30, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Berry Gummies', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Citrus Gummies', price: 1.25, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Gummy Worms', price: 1.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Rainbow Gummies', price: 1.20, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Choco Gummies', price: 1.15, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Coconut Gummies', price: 1.25, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Pineapple Gummies', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Mango Gummies', price: 1.30, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Strawberry Gummies', price: 1.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Blueberry Gummies', price: 1.20, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Watermelon Gummies', price: 1.15, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Lemon Gummies', price: 1.10, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-    {name: 'Grape Gummies', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+    {name:'Fruit Frenzy',price:1.00,img:'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f'},
+    {name:'Sour Gummies',price:1.20,img:'https://images.unsplash.com/photo-1615840922784-0e8e5e3b428f'}
   ],
   chocolates: {
     jumbo: [
-      {name: 'Mega Milk Chocolate', price: 3.99, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1589177521873-7c4f253f3b33?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Super Dark Chocolate', price: 4.49, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1609423913629-93c768d7b8f3?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Exotic Truffle', price: 5.99, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1599263776758-1f69f4b3f0e7?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Jumbo Caramel', price: 4.99, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1597083182506-0b86d7bdf4b9?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Exotic Mango Chocolate', price: 5.49, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1610717767634-9f660a11b4a7?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Rich Hazelnut', price: 4.89, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1609003611660-0b7d3a0b7f77?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Exotic Passion Fruit', price: 6.49, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1616721241132-6deae2b5b78e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Jumbo Nougat', price: 4.79, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1592734345320-7bfc0f2d2457?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Exotic Lychee', price: 6.99, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1612231092398-4a6a6b2f0c4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Jumbo White Chocolate', price: 4.59, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1596683058719-7dba2b9a9f3e?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+      {name:'Mega Milk',price:3.99,img:'https://images.unsplash.com/photo-1589177521873-7c4f253f3b33'},
     ],
     normal: [
-      {name: 'Milk Chocolate Bar', price: 1.99, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1570992846443-3d7d0a911d4d?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Dark Chocolate Bar', price: 2.09, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1570992846443-3d7d0a911d4d?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'White Chocolate Bar', price: 2.19, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1570992846443-3d7d0a911d4d?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Caramel Filled', price: 2.49, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607338879351-0d6b6d7f4f34?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Hazelnut Delight', price: 2.59, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603560773162-8d0e0d77a2d8?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Strawberry Filled', price: 2.49, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1616806719327-8e45d1d0b6e4?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Almond Crunch', price: 2.69, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1616785838123-1b2e1deed4e2?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Coconut Filled', price: 2.49, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607366435047-1a0d29f3b9f2?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Coffee Infused', price: 2.89, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1599448362303-9b8b8ed8a303?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Mint Chocolate', price: 2.59, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1605361368684-ff0a2d1c9e4d?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+      {name:'Milk Chocolate',price:1.99,img:'https://images.unsplash.com/photo-1570992846443-3d7d0a911d4d'}
     ],
     bite: [
-      {name: 'Mini Chocolate Bites', price: 0.99, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1597034454903-2c7d4fbc0b2a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Chocolate Chips', price: 1.09, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Bite-sized Truffles', price: 1.29, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Mini Caramel', price: 1.09, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Exotic Lychee Bites', price: 1.49, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Hazelnut Bites', price: 1.19, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Mango Bites', price: 1.49, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'White Chocolate Bites', price: 1.09, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Coconut Bites', price: 1.19, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Coffee Bites', price: 1.39, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603861488748-1410d7ed8f7a?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+      {name:'Mini Bites',price:0.99,img:'https://images.unsplash.com/photo-1597034454903-2c7d4fbc0b2a'}
     ]
   },
   chips: {
     small: [
-      {name: 'Classic Lays', price: 1.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Salt & Vinegar', price: 1.10, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'BBQ', price: 1.10, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Sour Cream', price: 1.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Cheddar', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Honey Mustard', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Jalapeño', price: 1.30, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Truffle', price: 1.50, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Lemon Pepper', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Paprika', price: 1.20, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+      {name:'Classic',price:1.00,img:'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f'},
     ],
     large: [
-      {name: 'Family Pack Lays', price: 3.99, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Sour Lays', price: 4.49, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'BBQ Large', price: 4.49, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Seaweed Large', price: 4.89, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Jalapeño Large', price: 4.99, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+      {name:'Large Pack',price:2.99,img:'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f'}
     ],
     jumbo: [
-      {name: 'Jumbo Family Pack', price: 8.99, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'},
-      {name: 'Jumbo Sour', price: 9.49, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f?ixlib=rb-4.0.4&auto=format&fit=crop&w=600&q=80'}
+      {name:'Jumbo Bag',price:4.99,img:'https://images.unsplash.com/photo-1607696313994-3b9b7a7f3f4f'}
     ]
   },
   drinks: {
     energy: [
-      {name: 'Energy Boost', price: 2.00, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607342181079-3e6f4f8c4b6f'},
-      {name: 'Turbo Charge', price: 2.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607342181079-3e6f4f8c4b6f'},
-      {name: 'Exotic Energy', price: 3.00, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1607342181079-3e6f4f8c4b6f'},
-      {name: 'Power Punch', price: 2.75, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607342181079-3e6f4f8c4b6f'},
-      {name: 'Voltage', price: 2.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1607342181079-3e6f4f8c4b6f'}
+      {name:'Energy Drink 1',price:2.00,img:'https://images.unsplash.com/photo-1607342181079-3e6f4f8c4b6f'},
     ],
     juices: [
-      {name: 'Apple Juice', price: 2.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1574158622682-e40e69881006'},
-      {name: 'Orange Juice', price: 2.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1574158622682-e40e69881006'},
-      {name: 'Grape Juice', price: 2.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1574158622682-e40e69881006'},
-      {name: 'Pineapple Juice', price: 2.75, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1574158622682-e40e69881006'},
-      {name: 'Mango Juice', price: 3.00, flavor: 'Exotic', img: 'https://images.unsplash.com/photo-1574158622682-e40e69881006'}
+      {name:'Apple Juice',price:2.50,img:'https://images.unsplash.com/photo-1574158622682-e40e69881006'},
     ],
     soda: [
-      {name: 'Cola', price: 1.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603573837224-0a6122f48602'},
-      {name: 'Lemon Lime', price: 1.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603573837224-0a6122f48602'},
-      {name: 'Orange Soda', price: 1.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603573837224-0a6122f48602'},
-      {name: 'Grape Soda', price: 1.50, flavor: 'Normal', img: 'https://images.unsplash.com/photo-1603573837224-0a6122f48602'}
+      {name:'Cola',price:1.50,img:'https://images.unsplash.com/photo-1603573837224-0a6122f48602'},
     ]
   }
 };
 
-// Initialize cart and reviews
+// Cart & reviews array
 let cart = [];
 let reviews = [];
-let currentRating = 0;
+let currentStar=0;
 
-// Utility functions
-function showSection(id) {
+// Show only selected page
+function showPage(id) {
   sections.forEach(s => {
     document.getElementById(s).classList.toggle('hidden', s !== id);
   });
-  currentSection = id;
-  // Animate section fade in
-  const section = document.getElementById(id);
-  section.style.opacity = 0;
-  setTimeout(() => {
-    section.style.transition = 'opacity 0.8s';
-    section.style.opacity = 1;
-  }, 50);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Fade in effect
+  const sec = document.getElementById(id);
+  sec.style.opacity=0;
+  setTimeout(()=> {
+    sec.style.transition='opacity 0.7s';
+    sec.style.opacity=1;
+  },50);
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// Create product cards with images
-function createProductCard(product, typeId) {
+// Create product cards
+function createProduct(product, containerId) {
+  const container = document.getElementById(containerId);
   const card = document.createElement('div');
-  card.className = 'product-card';
-  // Image
+  card.className='product-card';
+  
   const img = document.createElement('img');
-  img.src = product.img;
-  img.alt = product.name;
+  img.src=product.img;
+  img.alt=product.name;
   card.appendChild(img);
-  // Name
+  
   const title = document.createElement('h3');
-  title.innerText = product.name;
+  title.innerText=product.name;
   card.appendChild(title);
-  // Price
+  
   const price = document.createElement('p');
-  price.innerText = `💲 ${product.price.toFixed(2)}`;
+  price.innerText=`💲 ${product.price.toFixed(2)}`;
   card.appendChild(price);
-  // Add button
+  
   const btn = document.createElement('button');
-  btn.innerText = '🛒 Add to Cart';
-  btn.onclick = () => addToCart({...product});
+  btn.innerText='🛒 Add to Cart';
+  btn.onclick=()=>addToCart(product);
   card.appendChild(btn);
-  // Animate on hover
-  card.onmouseover = () => {
-    card.style.transform = 'scale(1.02)';
-    card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+  
+  // Hover effect
+  card.onmouseover=()=> {
+    card.style.transform='scale(1.03)';
+    card.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
   };
-  card.onmouseout = () => {
-    card.style.transform = 'scale(1)';
-    card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+  card.onmouseout=()=> {
+    card.style.transform='scale(1)';
+    card.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';
   };
-  document.getElementById(typeId).appendChild(card);
+  
+  container.appendChild(card);
 }
 
-// Generate all products
-function initProducts() {
+// Load all products
+function loadProducts() {
   Object.keys(products).forEach(cat => {
-    if (cat === 'chocolates') {
-      products[cat].jumbo.forEach(p => createProductCard(p, 'jumboChocolates'));
-      products[cat].normal.forEach(p => createProductCard(p, 'normalChocolates'));
-      products[cat].bite.forEach(p => createProductCard(p, 'biteChocolates'));
-    } else if (cat === 'chips') {
-      products[cat].small.forEach(p => createProductCard(p, 'smallChips'));
-      products[cat].large.forEach(p => createProductCard(p, 'largeChips'));
-      products[cat].jumbo.forEach(p => createProductCard(p, 'jumboChips'));
-    } else if (cat === 'drinks') {
+    if (cat==='chocolates') {
+      products[cat].jumbo.forEach(p=>createProduct(p,'jumboChocolates'));
+      products[cat].normal.forEach(p=>createProduct(p,'normalChocolates'));
+      products[cat].bite.forEach(p=>createProduct(p,'biteChocolates'));
+    } else if (cat==='chips') {
+      products[cat].small.forEach(p=>createProduct(p,'smallChips'));
+      products[cat].large.forEach(p=>createProduct(p,'largeChips'));
+      products[cat].jumbo.forEach(p=>createProduct(p,'jumboChips'));
+    } else if (cat==='drinks') {
       Object.keys(products[cat]).forEach(sub => {
-        products[cat][sub].forEach(p => createProductCard(p, sub));
+        products[cat][sub].forEach(p=>createProduct(p,sub));
       });
     } else {
-      products[cat].forEach(p => createProductCard(p, cat));
+      products[cat].forEach(p=>createProduct(p,cat));
     }
   });
 }
 
-// Cart functions
+// Add to cart
 function addToCart(product) {
   cart.push(product);
   updateCart();
 }
-
-function updateCart() {
-  const container = document.getElementById('cartContents');
-  container.innerHTML = '';
-  let total = 0;
-  cart.forEach((item, index) => {
-    const div = document.createElement('div');
-    div.className = 'cart-item';
-    div.innerHTML = `
-      <div style="display:flex; align-items:center;">
-        <img src="${item.img}" style="width:50px; height:50px; object-fit:cover; margin-right:10px; border-radius:8px;"/>
-        <div>
-          <strong>${item.name}</strong><br/>
-          💲 ${item.price.toFixed(2)}
-        </div>
-      </div>
-      <button style="margin-left:10px; background:#ff4d4d; color:white;" onclick="removeFromCart(${index})">Remove</button>`;
-    container.appendChild(div);
-    total += item.price;
-  });
-  document.getElementById('totalPrice').innerText = `Total: $${total.toFixed(2)}`;
-}
-
 function removeFromCart(index) {
-  cart.splice(index, 1);
+  cart.splice(index,1);
   updateCart();
 }
-
+function updateCart() {
+  const container=document.getElementById('cartContents');
+  container.innerHTML='';
+  let total=0;
+  cart.forEach((item,i)=> {
+    const div=document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML= `
+      <img src="${item.img}" />
+      <div style="flex:1; margin-left:10px;">
+        <b>${item.name}</b><br/>
+        💲 ${item.price.toFixed(2)}
+      </div>
+      <button style="background:#ff4d4d; border:none; padding:5px 10px; border-radius:8px; cursor:pointer; font-weight:bold; color:white;" onclick="removeFromCart(${i})">Remove</button>
+    `;
+    container.appendChild(div);
+    total+=item.price;
+  });
+  document.getElementById('totalPrice').innerText=`Total: $${total.toFixed(2)}`;
+}
 function clearCart() {
-  cart = [];
+  cart=[];
   updateCart();
 }
 
-// Delivery form
+// Submit delivery info
 function submitDelivery(e) {
   e.preventDefault();
-  alert('🎉 Your order has been placed! Thank you for shopping with us.');
-  cart = [];
+  alert('🎉 Order placed! Thank you!');
+  cart=[];
   updateCart();
-  showSection('welcome');
+  showPage('welcome');
   document.getElementById('deliveryForm').reset();
 }
 
-// Reviews
-const stars = document.querySelectorAll('.star');
+// Review stars
+const stars=document.querySelectorAll('.star');
 stars.forEach(s => {
-  s.addEventListener('mouseenter', () => highlightStars(parseInt(s.dataset.star)));
-  s.addEventListener('click', () => {
-    currentRating = parseInt(s.dataset.star);
-    highlightStars(currentRating);
-  });
+  s.addEventListener('mouseenter', ()=>highlightStars(parseInt(s.dataset.star)));
+  s.addEventListener('click', ()=>{currentStar=parseInt(s.dataset.star);highlightStars(currentStar);});
 });
 function highlightStars(rating) {
   stars.forEach(s => {
-    s.className = 'star' + (parseInt(s.dataset.star) <= rating ? ' selected' : '');
+    s.className='star' + (parseInt(s.dataset.star)<=rating?' selected':'');
   });
 }
 function submitReview() {
-  const comment = document.getElementById('comments').value;
-  if (currentRating === 0) {
-    alert('Please select a star rating!');
-    return;
-  }
-  reviews.push({rating: currentRating, comment: comment});
+  const comment=document.getElementById('comments').value;
+  if(currentStar===0){alert('Please rate!');return;}
+  reviews.push({rating:currentStar, comment:comment});
   displayReviews();
-  document.getElementById('comments').value = '';
-  currentRating = 0;
+  document.getElementById('comments').value='';
+  currentStar=0;
   highlightStars(0);
 }
 function displayReviews() {
-  const list = document.getElementById('reviewsList');
-  list.innerHTML = '';
+  const container=document.getElementById('reviews');
+  container.innerHTML='';
   reviews.forEach(r => {
-    const div = document.createElement('div');
-    div.innerHTML = `⭐${'&#9733;'.repeat(r.rating)}<br/>"${r.comment}"`;
-    list.appendChild(div);
+    const div=document.createElement('div');
+    div.innerHTML=`⭐${'★'.repeat(r.rating)}<br/>"${r.comment}"`;
+    container.appendChild(div);
   });
 }
 
-// Initialize everything
-initProducts();
-showSection('welcome');
+// Initialize
+loadProducts();
 </script>
 </body>
 </html>
